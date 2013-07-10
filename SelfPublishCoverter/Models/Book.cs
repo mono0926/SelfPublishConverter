@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Resources;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
@@ -37,7 +39,21 @@ namespace Mono.App.SelfPublishConverter.Model
 
         public string ConvertToHtml()
         {
-            return null;
+            var resourceManager = new ResourceManager("Mono.App.SelfPublishConverter.Properties.Resources", Assembly.GetExecutingAssembly());
+            var bookTemplate = resourceManager.GetString("HtmlBook");
+            var chapterTemplate = resourceManager.GetString("HtmlChapter");
+            var sectionTemplate = resourceManager.GetString("HtmlSection");
+
+            var chapterStrings = this.Chapters.Select(chapter =>
+                {
+                    return string.Format(chapterTemplate, chapter.Caption, chapter.Body,
+                        string.Join("\n", chapter.Sections.Select(section => string.Format(sectionTemplate, section.Caption, section.Body))));
+                });
+
+            var bookString = string.Format(bookTemplate, this.Title, string.Join("\n", chapterStrings));
+            File.WriteAllText("hoge.html", bookString);
+            Process.Start("kindlegen", "hoge.html");
+            return bookString;
         }
 
         public string ConvertToMobi()

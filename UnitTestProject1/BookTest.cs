@@ -17,5 +17,13 @@ namespace UnitTestProject1
             var book = Book.CreateFromJson(json);
             Debug.WriteLine(book);
         }
+        [TestMethod]
+        public void ConvertToHtmlTest()
+        {
+            var json = File.ReadAllText("../../data/sample.json");
+            var book = Book.CreateFromJson(json);
+            book.ConvertToHtml();
+            Debug.WriteLine(book);
+        }
     }
 }

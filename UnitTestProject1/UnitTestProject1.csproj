@@ -54,9 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SelfPublishCoverter\SelfPublishCoverter.csproj">
+    <ProjectReference Include="..\SelfPublishCoverter\SelfPublishConverter.csproj">
       <Project>{8f506c45-ae74-4915-9a8b-2797b13ae9d4}</Project>
-      <Name>SelfPublishCoverter</Name>
+      <Name>SelfPublishConverter</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
