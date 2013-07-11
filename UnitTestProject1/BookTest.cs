@@ -18,11 +18,11 @@ namespace UnitTestProject1
             Debug.WriteLine(book);
         }
         [TestMethod]
-        public void ConvertToHtmlTest()
+        public void ConvertToKindleTest()
         {
             var json = File.ReadAllText("../../data/sample.json");
             var book = Book.CreateFromJson(json);
-            book.ConvertToHtml();
+            book.ConvertToKindle();
             Debug.WriteLine(book);
         }
         [TestMethod]

@@ -40,6 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converter\ConverterBase.cs" />
+    <Compile Include="Converter\ConverterFactory.cs" />
+    <Compile Include="Converter\EpubConverter.cs" />
+    <Compile Include="Converter\IConverter.cs" />
+    <Compile Include="Converter\KindleConverter.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Chapter.cs" />
     <Compile Include="Models\Section.cs" />
