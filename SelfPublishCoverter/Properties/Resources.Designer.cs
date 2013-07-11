@@ -100,5 +100,40 @@ namespace Mono.App.SelfPublishConverter.Properties {
                 return ResourceManager.GetString("HtmlSection", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to % {0}
+        ///
+        ///{1}.
+        /// </summary>
+        internal static string MarkdownBook {
+            get {
+                return ResourceManager.GetString("MarkdownBook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to # {0}
+        ///
+        ///{1}
+        ///
+        ///{2}.
+        /// </summary>
+        internal static string MarkdownChapter {
+            get {
+                return ResourceManager.GetString("MarkdownChapter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ## {0}
+        ///
+        ///{1}.
+        /// </summary>
+        internal static string MarkdownSection {
+            get {
+                return ResourceManager.GetString("MarkdownSection", resourceCulture);
+            }
+        }
     }
 }

@@ -8,8 +8,8 @@ namespace Mono.App.SelfPublishConverter.Templates
 {
     class HtmlTemplate : ITemplate
     {
-        public string Book { get { return _resourceManager.GetString("HtmlBook"); } }
-        public string Chapter { get { return _resourceManager.GetString("HtmlChapter"); } }
-        public string Section { get { return _resourceManager.GetString("HtmlSection"); } }
+        public string Book { get { return TemplateManager.Instance.getResource("HtmlBook"); } }
+        public string Chapter { get { return TemplateManager.Instance.getResource("HtmlChapter"); } }
+        public string Section { get { return TemplateManager.Instance.getResource("HtmlSection"); } }
     }
 }

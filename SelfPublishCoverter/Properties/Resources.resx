@@ -140,4 +140,24 @@
     <value>&lt;h2&gt;{0}&lt;/h2&gt;
 &lt;p&gt;{1}&lt;/p&gt;</value>
   </data>
+  <data name="MarkdownBook" xml:space="preserve">
+    <value>% {0}
+
+{1}
+</value>
+  </data>
+  <data name="MarkdownChapter" xml:space="preserve">
+    <value># {0}
+
+{1}
+
+{2}
+</value>
+  </data>
+  <data name="MarkdownSection" xml:space="preserve">
+    <value>## {0}
+
+{1}
+</value>
+  </data>
 </root>

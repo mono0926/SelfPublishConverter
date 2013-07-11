@@ -25,5 +25,13 @@ namespace UnitTestProject1
             book.ConvertToHtml();
             Debug.WriteLine(book);
         }
+        [TestMethod]
+        public void ConvertToEpubTest()
+        {
+            var json = File.ReadAllText("../../data/sample.json");
+            var book = Book.CreateFromJson(json);
+            book.ConvertToEpub();
+            Debug.WriteLine(book);
+        }
     }
 }

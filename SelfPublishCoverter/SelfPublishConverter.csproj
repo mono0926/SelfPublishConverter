@@ -56,12 +56,12 @@
       <DependentUpon>Html.resx</DependentUpon>
     </Compile>
     <Compile Include="Templates\ITemplate.cs" />
+    <Compile Include="Templates\MarkdownTemplate.cs" />
     <Compile Include="Templates\TemplateManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Templates\Html.resx">
       <Generator>ResXFileCodeGenerator</Generator>
