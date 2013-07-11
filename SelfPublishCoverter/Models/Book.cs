@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mono.App.SelfPublishCoverter.Templates;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -39,18 +40,13 @@ namespace Mono.App.SelfPublishConverter.Model
 
         public string ConvertToHtml()
         {
-            var resourceManager = new ResourceManager("Mono.App.SelfPublishConverter.Properties.Resources", Assembly.GetExecutingAssembly());
-            var bookTemplate = resourceManager.GetString("HtmlBook");
-            var chapterTemplate = resourceManager.GetString("HtmlChapter");
-            var sectionTemplate = resourceManager.GetString("HtmlSection");
-
             var chapterStrings = this.Chapters.Select(chapter =>
                 {
-                    return string.Format(chapterTemplate, chapter.Caption, chapter.Body,
-                        string.Join("\n", chapter.Sections.Select(section => string.Format(sectionTemplate, section.Caption, section.Body))));
+                    var chapters = chapter.Sections.Select(section => string.Format(TemplateManager.Instance.HtmlSection, section.Caption, section.Body));
+                    return string.Format(TemplateManager.Instance.HtmlChapter, chapter.Caption, chapter.Body, string.Join("\n", chapters));
                 });
 
-            var bookString = string.Format(bookTemplate, this.Title, string.Join("\n", chapterStrings));
+            var bookString = string.Format(TemplateManager.Instance.HtmlBook, this.Title, string.Join("\n", chapterStrings));
             File.WriteAllText("hoge.html", bookString);
             Process.Start("kindlegen", "hoge.html");
             return bookString;
@@ -60,7 +56,7 @@ namespace Mono.App.SelfPublishConverter.Model
         {
             return null;
         }
-        
+
     }
 
 }
