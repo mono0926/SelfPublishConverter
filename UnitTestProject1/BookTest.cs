@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Mono.App.SelfPublishConverter.Model;
+using Mono.App.SelfPublishConverter.Models;
 
 
 namespace UnitTestProject1
@@ -22,7 +22,7 @@ namespace UnitTestProject1
         {
             var json = File.ReadAllText("../../data/sample.json");
             var book = Book.CreateFromJson(json);
-            book.ConvertToKindle();
+            book.Convert(FormatType.Kindle);
             Debug.WriteLine(book);
         }
         [TestMethod]
@@ -30,7 +30,7 @@ namespace UnitTestProject1
         {
             var json = File.ReadAllText("../../data/sample.json");
             var book = Book.CreateFromJson(json);
-            book.ConvertToEpub();
+            book.Convert(FormatType.Epub);
             Debug.WriteLine(book);
         }
     }

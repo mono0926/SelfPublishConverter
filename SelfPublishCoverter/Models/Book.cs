@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using Mono.App.SelfPublishConverter.Templates;
 using Mono.App.SelfPublishConverter.Converter;
 
-namespace Mono.App.SelfPublishConverter.Model
+namespace Mono.App.SelfPublishConverter.Models
 {
     [DataContract]
     public class Book
@@ -34,13 +34,26 @@ namespace Mono.App.SelfPublishConverter.Model
             return book;
         }
 
-        public string ConvertToEpub()
+        public string Convert(FormatType type)
+        {
+            switch (type)
+            {
+                case FormatType.Kindle:
+                    return ConvertToKindle();
+                    case FormatType.Epub:
+                    return ConvertToEpub();
+                default:
+                    return null;
+            }
+        }
+
+        private string ConvertToEpub()
         {
             var converter = ConverterFactory.MarkdownConverter;
             var result = converter.Convert(this);
             return result;
         }
-        public string ConvertToKindle()
+        private string ConvertToKindle()
         {
             var converter = ConverterFactory.KindleConverter;
             var result = converter.Convert(this);

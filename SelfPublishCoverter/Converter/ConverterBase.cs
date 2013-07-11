@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Mono.App.SelfPublishConverter.Model;
+using Mono.App.SelfPublishConverter.Models;
 using Mono.App.SelfPublishConverter.Templates;
 
 namespace Mono.App.SelfPublishConverter.Converter

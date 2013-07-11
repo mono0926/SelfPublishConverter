@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mono.App.SelfPublishConverter.Model
+namespace Mono.App.SelfPublishConverter.Models
 {
     [DataContract]
     public class Chapter
