@@ -15,11 +15,14 @@ namespace Mono.App.SelfPublishConverter.Converter
         {
         }
 
-        protected override void Convert(string formattedString)
+        protected override void Convert(string formattedString, string outputPath)
         {
-            const string markdownPath = "temp.markdown";
+            var fileInfo = new FileInfo(outputPath);
+            var dir = fileInfo.DirectoryName;
+            var markdownPath = Path.Combine(dir, string.Format("{0}.markdown", Path.GetFileNameWithoutExtension(outputPath)));
+            var epubPath = Path.Combine(dir, string.Format("{0}.epub", Path.GetFileNameWithoutExtension(outputPath)));
             File.WriteAllText(markdownPath, formattedString);
-            ExecuteCommand("pandoc", markdownPath, "-s", "-o", "temp.epub");
+            ExecuteCommand("pandoc", markdownPath, "-s", "-o", epubPath);
         }
     }
 }

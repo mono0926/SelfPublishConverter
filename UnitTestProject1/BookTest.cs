@@ -22,7 +22,7 @@ namespace UnitTestProject1
         {
             var json = File.ReadAllText("../../data/sample.json");
             var book = Book.CreateFromJson(json);
-            book.Convert(FormatType.Kindle);
+            book.Convert(FormatType.Kindle, @"C:/amazon/temp/hoge.mobi");
             Debug.WriteLine(book);
         }
         [TestMethod]
@@ -30,7 +30,7 @@ namespace UnitTestProject1
         {
             var json = File.ReadAllText("../../data/sample.json");
             var book = Book.CreateFromJson(json);
-            book.Convert(FormatType.Epub);
+            book.Convert(FormatType.Epub, @"C:/amazon/temp/hoge.epub");
             Debug.WriteLine(book);
         }
     }

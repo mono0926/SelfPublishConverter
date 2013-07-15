@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,12 +19,12 @@ namespace Mono.App.SelfPublishConverter.Converter
             _template = template;
         }
 
-        protected abstract void Convert(string formattedString);
+        protected abstract void Convert(string formattedString, string outputPath);
 
-        public string Convert(Book book)
+        public string Convert(Book book, string outputPath)
         {
             var formattedString = ConvertToFormattedString(book);
-            Convert(formattedString);
+            Convert(formattedString, outputPath);
             return formattedString;
         }
 
@@ -41,11 +42,14 @@ namespace Mono.App.SelfPublishConverter.Converter
 
         protected void ExecuteCommand(string filename, params string[] arguments)
         {
+            var resourcManager = MyResourceManager.Instance;
+            resourcManager.ExractResources();
+
             var pro = new Process
             {
                 StartInfo =
                 {
-                    FileName = filename,
+                    FileName = Path.Combine(resourcManager.BinDirectory, filename),
                     Arguments = string.Join(" ", arguments),
                     CreateNoWindow = true,
                     UseShellExecute = false,

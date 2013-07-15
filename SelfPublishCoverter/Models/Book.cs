@@ -34,29 +34,29 @@ namespace Mono.App.SelfPublishConverter.Models
             return book;
         }
 
-        public string Convert(FormatType type)
+        public string Convert(FormatType type, string outputPath)
         {
             switch (type)
             {
                 case FormatType.Kindle:
-                    return ConvertToKindle();
+                    return ConvertToKindle(outputPath);
                     case FormatType.Epub:
-                    return ConvertToEpub();
+                    return ConvertToEpub(outputPath);
                 default:
                     return null;
             }
         }
 
-        private string ConvertToEpub()
+        private string ConvertToEpub(string outputPath)
         {
             var converter = ConverterFactory.MarkdownConverter;
-            var result = converter.Convert(this);
+            var result = converter.Convert(this, outputPath);
             return result;
         }
-        private string ConvertToKindle()
+        private string ConvertToKindle(string outputPath)
         {
             var converter = ConverterFactory.KindleConverter;
-            var result = converter.Convert(this);
+            var result = converter.Convert(this, outputPath);
             return result;
         }
 

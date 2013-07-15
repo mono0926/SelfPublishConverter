@@ -50,35 +50,29 @@
     <Compile Include="Models\FormatType.cs" />
     <Compile Include="Models\Section.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
+    <Compile Include="Properties\Resources1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Templates\HtmlTemplate.cs" />
-    <Compile Include="Templates\Html.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Html.resx</DependentUpon>
-    </Compile>
     <Compile Include="Templates\ITemplate.cs" />
     <Compile Include="Templates\MarkdownTemplate.cs" />
-    <Compile Include="Templates\TemplateManager.cs" />
+    <Compile Include="Templates\MyResourceManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Templates\Html.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Html.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Templates\Html\book.txt" />
-    <Content Include="Templates\Html\chapter.txt" />
-    <Content Include="Templates\Html\section.txt" />
+    <EmbeddedResource Include="kindlegen.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pandoc.exe" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

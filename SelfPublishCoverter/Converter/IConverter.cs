@@ -9,6 +9,6 @@ namespace Mono.App.SelfPublishConverter.Converter
 {
     interface IConverter
     {
-        string Convert(Book book);
+        string Convert(Book book, string outputPath);
     }
 }

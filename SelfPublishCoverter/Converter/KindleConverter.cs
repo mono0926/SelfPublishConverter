@@ -16,9 +16,11 @@ namespace Mono.App.SelfPublishConverter.Converter
         {
         }
 
-        protected override void Convert(string formattedString)
+        protected override void Convert(string formattedString, string outputPath)
         {
-            const string htmlPath = "hoge.html";
+            var fileInfo = new FileInfo(outputPath);
+            var dir = fileInfo.DirectoryName;
+            var htmlPath = Path.Combine(dir, string.Format("{0}.html", Path.GetFileNameWithoutExtension(outputPath)));
             File.WriteAllText(htmlPath, formattedString);
             ExecuteCommand("kindlegen", htmlPath);
         }

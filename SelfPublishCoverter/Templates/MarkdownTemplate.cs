@@ -10,17 +10,17 @@ namespace Mono.App.SelfPublishConverter.Templates
     {
         public string Book
         {
-            get { return TemplateManager.Instance.getResource("MarkdownBook"); }
+            get { return Properties.Resources.MarkdownBook; }
         }
 
         public string Chapter
         {
-            get { return TemplateManager.Instance.getResource("MarkdownChapter"); }
+            get { return Properties.Resources.MarkdownChapter; }
         }
 
         public string Section
         {
-            get { return TemplateManager.Instance.getResource("MarkdownSection"); }
+            get { return Properties.Resources.MarkdownSection; }
         }
     }
 }
