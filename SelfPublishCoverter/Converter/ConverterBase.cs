@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Mono.App.SelfPublishConverter.Models;
 using Mono.App.SelfPublishConverter.Templates;
+using Mono.Framework.Common.Extensios;
 
 namespace Mono.App.SelfPublishConverter.Converter
 {
@@ -44,13 +45,12 @@ namespace Mono.App.SelfPublishConverter.Converter
         {
             var resourcManager = MyResourceManager.Instance;
             resourcManager.ExractResources();
-
             var pro = new Process
             {
                 StartInfo =
                 {
                     FileName = Path.Combine(resourcManager.BinDirectory, filename),
-                    Arguments = string.Join(" ", arguments),
+                    Arguments = string.Join(" ", arguments.Select(x => string.Format("\"{0}\"", x))),
                     CreateNoWindow = true,
                     UseShellExecute = false,
                     RedirectStandardOutput = true
