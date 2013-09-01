@@ -45,6 +45,7 @@
     <Compile Include="Converter\EpubConverter.cs" />
     <Compile Include="Converter\IConverter.cs" />
     <Compile Include="Converter\KindleConverter.cs" />
+    <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Chapter.cs" />
     <Compile Include="Models\FormatType.cs" />

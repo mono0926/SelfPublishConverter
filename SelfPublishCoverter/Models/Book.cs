@@ -17,10 +17,12 @@ namespace Mono.App.SelfPublishConverter.Models
     [DataContract]
     public class Book
     {
+        [DataMember(Name = "format")]
+        public string Format { get; set; }
         [DataMember(Name = "title")]
         public string Title { get; set; }
         [DataMember(Name = "author")]
-        public string Author { get; set; }
+        public Author Author { get; set; }
         [DataMember(Name = "chapters")]
         public IEnumerable<Chapter> Chapters { get; set; }
 
