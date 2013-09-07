@@ -16,12 +16,12 @@ namespace Mono.App.SelfPublishConverter.Converter
         {
         }
 
-        protected override void Convert(string formattedString, string outputPath)
+        protected override void ConvertImpl(Book book, string outputPath)
         {
             var fileInfo = new FileInfo(outputPath);
             var dir = fileInfo.DirectoryName;
             var htmlPath = Path.Combine(dir, string.Format("{0}.html", Path.GetFileNameWithoutExtension(outputPath)));
-            File.WriteAllText(htmlPath, formattedString);
+            File.WriteAllText(htmlPath, ConvertToFormattedString(book));
             ExecuteCommand("kindlegen", htmlPath);
         }
     }

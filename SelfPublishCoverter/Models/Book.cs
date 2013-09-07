@@ -21,6 +21,8 @@ namespace Mono.App.SelfPublishConverter.Models
         public string Format { get; set; }
         [DataMember(Name = "title")]
         public string Title { get; set; }
+        [DataMember(Name = "coverImageBase64")]
+        public string CoverImageBase64 { get; set; }
         [DataMember(Name = "author")]
         public Author Author { get; set; }
         [DataMember(Name = "chapters")]
@@ -36,30 +38,30 @@ namespace Mono.App.SelfPublishConverter.Models
             return book;
         }
 
-        public string Convert(FormatType type, string outputPath)
+        public void Convert(FormatType type, string outputPath)
         {
             switch (type)
             {
                 case FormatType.Kindle:
-                    return ConvertToKindle(outputPath);
+                    ConvertToKindle(outputPath);
+                    break;
                     case FormatType.Epub:
-                    return ConvertToEpub(outputPath);
+                    ConvertToEpub(outputPath);
+                    break;
                 default:
-                    return null;
+                    break;
             }
         }
 
-        private string ConvertToEpub(string outputPath)
+        private void ConvertToEpub(string outputPath)
         {
             var converter = ConverterFactory.MarkdownConverter;
-            var result = converter.Convert(this, outputPath);
-            return result;
+            converter.Convert(this, outputPath);
         }
-        private string ConvertToKindle(string outputPath)
+        private void ConvertToKindle(string outputPath)
         {
             var converter = ConverterFactory.KindleConverter;
-            var result = converter.Convert(this, outputPath);
-            return result;
+            converter.Convert(this, outputPath);
         }
 
     }
