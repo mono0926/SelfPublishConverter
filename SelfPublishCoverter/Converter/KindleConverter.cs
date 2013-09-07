@@ -10,19 +10,18 @@ using Mono.App.SelfPublishConverter.Models;
 
 namespace Mono.App.SelfPublishConverter.Converter
 {
-    class KindleConverter : ConverterBase
+    class KindleConverter : EpubConverter
     {
-        public KindleConverter(HtmlTemplate template) : base(template)
+        public KindleConverter(MarkdownTemplate template)
+            : base(template)
         {
         }
 
-        protected override void Convert(string formattedString, string outputPath)
+        protected override void ConvertImpl(Book book, string outputPath)
         {
-            var fileInfo = new FileInfo(outputPath);
-            var dir = fileInfo.DirectoryName;
-            var htmlPath = Path.Combine(dir, string.Format("{0}.html", Path.GetFileNameWithoutExtension(outputPath)));
-            File.WriteAllText(htmlPath, formattedString);
-            ExecuteCommand("kindlegen", htmlPath);
+            base.ConvertImpl(book, outputPath);
+            var epubPath = Path.Combine(Path.GetDirectoryName(outputPath), string.Format("{0}.epub", Path.GetFileNameWithoutExtension(outputPath)));
+            ExecuteCommand("kindlegen", epubPath);
         }
     }
 }

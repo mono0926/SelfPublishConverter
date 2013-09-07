@@ -18,7 +18,7 @@ namespace Mono.App.SelfPublishConverter.Converter
             {
                 if (_kindleConverter == null)
                 {
-                    _kindleConverter = new KindleConverter(new HtmlTemplate());
+                    _kindleConverter = new KindleConverter(new MarkdownTemplate());
                 }
                 return _kindleConverter;
             }

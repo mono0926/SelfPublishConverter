@@ -20,16 +20,14 @@ namespace Mono.App.SelfPublishConverter.Converter
             _template = template;
         }
 
-        protected abstract void Convert(string formattedString, string outputPath);
+        protected abstract void ConvertImpl(Book book, string outputPath);
 
-        public string Convert(Book book, string outputPath)
+        public void Convert(Book book, string outputPath)
         {
-            var formattedString = ConvertToFormattedString(book);
-            Convert(formattedString, outputPath);
-            return formattedString;
+            ConvertImpl(book, outputPath);
         }
 
-        private string ConvertToFormattedString(Book book)
+        protected string ConvertToFormattedString(Book book)
         {
             var chapterStrings = book.Chapters.Select(chapter =>
             {
