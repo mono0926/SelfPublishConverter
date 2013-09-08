@@ -11,6 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Mono.App.SelfPublishConverter.Templates;
 using Mono.App.SelfPublishConverter.Converter;
+using System.Text.RegularExpressions;
+using Mono.App.SelfPublishConverter.Dropbox;
+using Mono.Framework.Common.Extensios;
 
 namespace Mono.App.SelfPublishConverter.Models
 {
@@ -64,6 +67,26 @@ namespace Mono.App.SelfPublishConverter.Models
             converter.Convert(this, outputPath);
         }
 
+        static Regex _regex = new Regex("\\!\\[\\]\\(([a-zA-Z0-9.]*)\\)");
+
+        public void DownloadImages(string outputDir)
+        {
+            var client = new DropboxClient(this.Author.DBUserToken, this.Author.DBUserSecret);
+            var bodies = this.Chapters.Select(x => x.Body).ToList();
+            var sectionBodies = this.Chapters.SelectMany(x => x.Sections).Select(x => x.Body);
+            bodies.AddRange(sectionBodies);
+            bodies.ForEach(body =>
+            {
+                var matcheds = _regex.Matches(body);
+                matcheds.Cast<Match>().ForEach(x =>
+                {
+                    var filename = x.Value.Substring(4, x.Value.Length - 5);
+                    var outputPath = Path.Combine(outputDir, filename);
+                    client.SaveFile(string.Format("/{0}", filename), outputPath);
+                });
+
+            });
+        }
     }
 
 }

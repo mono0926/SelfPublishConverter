@@ -55,6 +55,7 @@
     <Compile Include="Converter\IConverter.cs" />
     <Compile Include="Converter\KindleConverter.cs" />
     <Compile Include="Converter\SelfPublishUtil.cs" />
+    <Compile Include="Dropbox\DropboxClient.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Chapter.cs" />

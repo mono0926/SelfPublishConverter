@@ -4,15 +4,19 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Mono.App.SelfPublishConverter.Dropbox;
 using Mono.App.SelfPublishConverter.Models;
 using Mono.App.SelfPublishConverter.Templates;
+using Mono.Framework.Common.Extensios;
 
 namespace Mono.App.SelfPublishConverter.Converter
 {
     class EpubConverter : ConverterBase
     {
-        public EpubConverter(MarkdownTemplate template) : base(template)
+        public EpubConverter(MarkdownTemplate template)
+            : base(template)
         {
         }
 
@@ -20,6 +24,7 @@ namespace Mono.App.SelfPublishConverter.Converter
         {
             var fileInfo = new FileInfo(outputPath);
             var dir = fileInfo.DirectoryName;
+            book.DownloadImages(dir);
             var markdownPath = Path.Combine(dir, string.Format("{0}.markdown", Path.GetFileNameWithoutExtension(outputPath)));
             var epubPath = Path.Combine(dir, string.Format("{0}.epub", Path.GetFileNameWithoutExtension(outputPath)));
             File.WriteAllText(markdownPath, ConvertToFormattedString(book));
@@ -38,5 +43,6 @@ namespace Mono.App.SelfPublishConverter.Converter
                 ExecuteCommand("pandoc", markdownPath, "-s", "-o", epubPath, coverImageOption);
             }
         }
+
     }
 }

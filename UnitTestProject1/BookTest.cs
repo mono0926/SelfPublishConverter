@@ -36,7 +36,7 @@ namespace UnitTestProject1
         }
 
         [TestMethod]
-        public void HOge()
+        public void Hoge()
         {
             var client = new DropNetClient("j55215vf75hur2l", "ukzqht19mebjm8x", "jbsz8rphhlhc49pg", "mfttricp7z0tyfu");
             client.UseSandbox = true;
