@@ -35,7 +35,7 @@ namespace Mono.App.SelfPublishConverter.Converter
                 return string.Format(_template.Chapter, chapter.Caption, chapter.Body, string.Join("\n", chapters));
             });
 
-            var bookString = string.Format(_template.Book, book.Title, string.Join("\n", chapterStrings));
+            var bookString = string.Format(_template.Book, book.Title, book.Author.Name, DateTime.Now.ToShortDateString(), string.Join("\n", chapterStrings));
             return bookString;
         }
 

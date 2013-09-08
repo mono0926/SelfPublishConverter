@@ -142,8 +142,10 @@
   </data>
   <data name="MarkdownBook" xml:space="preserve">
     <value>% {0}
+% {1}
+% {2}
 
-{1}
+{3}
 </value>
   </data>
   <data name="MarkdownChapter" xml:space="preserve">
