@@ -15,5 +15,11 @@ namespace Mono.App.SelfPublishConverter.Models
 
         [DataMember(Name = "accessToken")]
         public string AccessToken { get; set; }
+
+        [DataMember(Name = "dbUserToken")]
+        public string DBUserToken { get; set; }
+
+        [DataMember(Name = "dbUserSecret")]
+        public string DBUserSecret { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using DropNet;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Mono.App.SelfPublishConverter.Models;
 
@@ -32,6 +33,15 @@ namespace UnitTestProject1
             var book = Book.CreateFromJson(json);
             book.Convert(FormatType.Epub, @"C:/amazon/temp/hoge.epub");
             Debug.WriteLine(book);
+        }
+
+        [TestMethod]
+        public void HOge()
+        {
+            var client = new DropNetClient("j55215vf75hur2l", "ukzqht19mebjm8x", "jbsz8rphhlhc49pg", "mfttricp7z0tyfu");
+            client.UseSandbox = true;
+            var data = client.GetFile("/ebaf9.jpg");
+            File.WriteAllBytes(@"C:\amazon\temp\db.jpg", data);
         }
     }
 }
